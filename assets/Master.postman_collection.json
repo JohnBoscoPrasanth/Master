@@ -1,0 +1,228 @@
+{
+	"info": {
+		"_postman_id": "5a8f4de8-18de-40b9-a63d-7af1b860eeb0",
+		"name": "Master",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22907115",
+		"_collection_link": "https://martian-water-920001.postman.co/workspace/YouCanFly~6333739f-6fe0-47cd-b374-55391b320f2c/collection/22907115-5a8f4de8-18de-40b9-a63d-7af1b860eeb0?action=share&source=collection_link&creator=22907115"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var token = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"authorization\", '${token.data.accesstoken}' )"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"johnbosco.george@twilightsoftwares.com\",\r\n    \"password\": \"SmartWork@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}login/",
+							"host": [
+								"{{BASE_URL}}login"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"johnbosco.george@twilightsoftwares.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}login/forgotpassword",
+							"host": [
+								"{{BASE_URL}}login"
+							],
+							"path": [
+								"forgotpassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"resetCode\": \"6d965434-e125-493a-affb-4e161034be3a\",\r\n    \"newPassword\": \"SmartWork@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}login/resetpassword",
+							"host": [
+								"{{BASE_URL}}login"
+							],
+							"path": [
+								"resetpassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Access_Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    //Refresh Token\r\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiam9obmJvc2NvLmdlb3JnZUB0d2lsaWdodHNvZnR3YXJlcy5jb20iLCJpZCI6MiwiaWF0IjoxNzAzMDU5NTg3fQ.-HWBO5nuN3TlBeo644jIeZckh6D6O5oA6pojhExOJJU\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}login/logout",
+							"host": [
+								"{{BASE_URL}}login"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Access_Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    //Refresh Token\r\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiam9obmJvc2NvLmdlb3JnZUB0d2lsaWdodHNvZnR3YXJlcy5jb20iLCJpZCI6MiwiaWF0IjoxNzAzMDU5NTg3fQ.-HWBO5nuN3TlBeo644jIeZckh6D6O5oA6pojhExOJJU\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}login/refreshToken/",
+							"host": [
+								"{{BASE_URL}}login"
+							],
+							"path": [
+								"refreshToken",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTE1TYWRtaW4iLCJpZCI6MywiaWF0IjoxNzAyMTE0MDcyLCJleHAiOjE3MDIxMTc2NzJ9.MFc-1VCgv0Rp8I3yVBsccxCAEQVIzsORrdHVuR_SpPQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"TestUser\",\r\n    \"lastName\": \"TS\",\r\n    \"mobile\": \"9854563215\",\r\n    \"email\": \"tests@lms.ai\",\r\n    \"modules\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/user/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,12 @@
+
+# Dependency directories
+node_modules/
+
+# custom environment variables file
+#env/
+#!env/.env*.example
+
+# Log files
+package-lock.json
+logs/
+converage/
